@@ -13,9 +13,14 @@ export default function App() {
   // Functions
   function startTimer() {
     intervalRef.current = setInterval (() => {
-      setTimeLeft(timeLeft => (
-          (timeLeft >= 1) ? timeLeft - 1 : 0
-        )
+      setTimeLeft(timeLeft => {
+          if (timeLeft >= 1) {
+            return timeLeft - 1;
+          }
+
+          resetTimer();
+          return 0;
+        }
       );
     }, 1000);
     setTitle("You're doing great!!");
