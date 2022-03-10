@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import './App.css';
 
+function padTime(number, len = 2, char = '0') {
+  return number.toString().padStart(len, char);
+} 
+
 export default function App() {
 
   const [timeLeft, setTimeLeft] = useState(25*60);
 
-  const minutes = Math.floor(timeLeft / 60);
-  const seconds = (timeLeft - (minutes*60));
+  const minutes = padTime(Math.floor(timeLeft / 60));
+  const seconds = padTime(timeLeft - (minutes*60));
 
   return (
     <div className="app">
