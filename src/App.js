@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 
 export default function App() {
+  const [timeLeft, setTimeLeft] = useState(25*60)
   return (
     <div className="app">
       <h2>Pomodoro!</h2>
