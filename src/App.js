@@ -28,6 +28,8 @@ export default function App() {
 
   function resetTimer() {
     clearInterval(intervalRef.current);
+    setTimeLeft(25 * 60);
+    setTitle("Ready to go another time?");
   }
   
   // Computed Variables
