@@ -28,6 +28,7 @@ export default function App() {
 
   function resetTimer() {
     clearInterval(intervalRef.current);
+    intervalRef.current = null;
     setTimeLeft(25 * 60);
     setTitle("Ready to go another round?");
   }
@@ -48,7 +49,7 @@ export default function App() {
 
       <div className="buttons">
         <button onClick={startTimer}>Start</button>
-        <button onClick={stopTimer}>Stop</button>
+        <button onClick={stopTimer} disabled={intervalRef.current === null}>Stop</button>
         <button onClick={resetTimer}>Reset</button>
       </div>
     </div>
