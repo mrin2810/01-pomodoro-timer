@@ -35,9 +35,9 @@ export default function App() {
   function stopTimer() {
     if(isRunning) {
       clearInterval(intervalRef.current);
+      setIsRunning(false);
+      setTitle("Don't Give Up... Stay at it!!");
     }
-    setIsRunning(false);
-    setTitle("Don't Give Up... Stay at it!!");
   }
 
   function resetTimer() {
@@ -67,7 +67,7 @@ export default function App() {
       <div className="buttons">
         {!isRunning && <button onClick={startTimer}>Start</button>}
         {isRunning && <button onClick={stopTimer} disabled={intervalRef.current === null}>Stop</button>}
-        {isRunning && <button onClick={resetTimer}>Reset</button>}
+        {timeLeft < 25*60 && <button onClick={resetTimer}>Reset</button>}
       </div>
     </div>
   );
