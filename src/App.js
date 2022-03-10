@@ -6,7 +6,7 @@ function padTime(number, len = 2, char = '0') {
 } 
 
 export default function App() {
-
+  const [title, setTitle] = useState('Let the Countdown Begin!')
   const [timeLeft, setTimeLeft] = useState(25*60);
 
   const minutes = padTime(Math.floor(timeLeft / 60));
@@ -14,7 +14,7 @@ export default function App() {
 
   return (
     <div className="app">
-      <h2>Pomodoro!</h2>
+      <h2>{title}</h2>
 
       <div className="timer">
         <span>{minutes}</span>
