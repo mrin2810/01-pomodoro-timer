@@ -9,6 +9,8 @@ export default function App() {
   // State Variables
   const [title, setTitle] = useState('Let the Countdown Begin!')
   const [timeLeft, setTimeLeft] = useState(25 * 60);
+  const [isRunning, setIsRunning] = useState(false);
+
   const intervalRef = useRef(null);
   // Functions
   function startTimer() {
@@ -16,6 +18,7 @@ export default function App() {
       return;
     }
     intervalRef.current = setInterval (() => {
+      setIsRunning(true);
       setTimeLeft(timeLeft => {
           if (timeLeft >= 1) {
             return timeLeft - 1;
@@ -30,19 +33,21 @@ export default function App() {
   }
 
   function stopTimer() {
-    if(intervalRef.current === null) {
+    if(intervalRef.current !== null) {
       clearInterval(intervalRef.current);
     }
+    setIsRunning(false);
     setTitle("Don't Give Up... Stay at it!!");
   }
 
   function resetTimer() {
-    if(intervalRef.current === null) {
+    if(intervalRef.current !== null) {
       clearInterval(intervalRef.current);
+      setIsRunning(false);
+      intervalRef.current = null;
+      setTimeLeft(25 * 60);
+      setTitle("Ready to go another round?");
     }
-    intervalRef.current = null;
-    setTimeLeft(25 * 60);
-    setTitle("Ready to go another round?");
   }
   
   // Computed Variables
