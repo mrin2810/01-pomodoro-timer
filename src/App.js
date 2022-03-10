@@ -14,7 +14,7 @@ export default function App() {
   const intervalRef = useRef(null);
   // Functions
   function startTimer() {
-    if (intervalRef.current === null) {
+    if (isRunning) {
       return;
     }
     intervalRef.current = setInterval (() => {
@@ -33,7 +33,7 @@ export default function App() {
   }
 
   function stopTimer() {
-    if(intervalRef.current !== null) {
+    if(isRunning) {
       clearInterval(intervalRef.current);
     }
     setIsRunning(false);
@@ -41,7 +41,7 @@ export default function App() {
   }
 
   function resetTimer() {
-    if(intervalRef.current !== null) {
+    if(isRunning) {
       clearInterval(intervalRef.current);
       setIsRunning(false);
       intervalRef.current = null;
@@ -65,9 +65,9 @@ export default function App() {
       </div>
 
       <div className="buttons">
-        <button onClick={startTimer}>Start</button>
-        <button onClick={stopTimer} disabled={intervalRef.current === null}>Stop</button>
-        <button onClick={resetTimer}>Reset</button>
+        {!isRunning && <button onClick={startTimer}>Start</button>}
+        {isRunning && <button onClick={stopTimer} disabled={intervalRef.current === null}>Stop</button>}
+        {isRunning && <button onClick={resetTimer}>Reset</button>}
       </div>
     </div>
   );
