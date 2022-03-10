@@ -20,6 +20,10 @@ export default function App() {
     }, 1000);
 
   }
+
+  function stopTimer() {
+    clearInterval()
+  }
   
   // Computed Variables
   const minutes = padTime(Math.floor(timeLeft / 60));
@@ -37,7 +41,7 @@ export default function App() {
 
       <div className="buttons">
         <button onClick={startTimer}>Start</button>
-        <button>Stop</button>
+        <button onClick={stopTimer}>Stop</button>
         <button>Reset</button>
       </div>
     </div>
