@@ -12,6 +12,9 @@ export default function App() {
   const intervalRef = useRef(null);
   // Functions
   function startTimer() {
+    if (intervalRef.current === null) {
+      return;
+    }
     intervalRef.current = setInterval (() => {
       setTimeLeft(timeLeft => {
           if (timeLeft >= 1) {
@@ -27,12 +30,16 @@ export default function App() {
   }
 
   function stopTimer() {
-    clearInterval(intervalRef.current);
+    if(intervalRef.current === null) {
+      clearInterval(intervalRef.current);
+    }
     setTitle("Don't Give Up... Stay at it!!");
   }
 
   function resetTimer() {
-    clearInterval(intervalRef.current);
+    if(intervalRef.current === null) {
+      clearInterval(intervalRef.current);
+    }
     intervalRef.current = null;
     setTimeLeft(25 * 60);
     setTitle("Ready to go another round?");
