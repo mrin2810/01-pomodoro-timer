@@ -35,6 +35,7 @@ export default function App() {
   function stopTimer() {
     if(isRunning) {
       clearInterval(intervalRef.current);
+      intervalRef.current = null;
       setIsRunning(false);
       setTitle("Don't Give Up... Stay at it!!");
     }
@@ -43,8 +44,8 @@ export default function App() {
   function resetTimer() {
     if(isRunning) {
       clearInterval(intervalRef.current);
-      setIsRunning(false);
       intervalRef.current = null;
+      setIsRunning(false);
       setTimeLeft(25 * 60);
       setTitle("Ready to go another round?");
     }
