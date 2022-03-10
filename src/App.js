@@ -42,13 +42,11 @@ export default function App() {
   }
 
   function resetTimer() {
-    if(isRunning) {
       clearInterval(intervalRef.current);
       intervalRef.current = null;
       setIsRunning(false);
       setTimeLeft(25 * 60);
       setTitle("Ready to go another round?");
-    }
   }
   
   // Computed Variables
