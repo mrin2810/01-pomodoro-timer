@@ -18,11 +18,16 @@ export default function App() {
         )
       );
     }, 1000);
-
+    setTitle("You're doing great!!");
   }
 
   function stopTimer() {
-    clearInterval(intervalRef.current)
+    clearInterval(intervalRef.current);
+    setTitle("Don't Give Up... Stay at it!!");
+  }
+
+  function resetTimer() {
+    clearInterval(intervalRef.current);
   }
   
   // Computed Variables
@@ -42,7 +47,7 @@ export default function App() {
       <div className="buttons">
         <button onClick={startTimer}>Start</button>
         <button onClick={stopTimer}>Stop</button>
-        <button>Reset</button>
+        <button onClick={resetTimer}>Reset</button>
       </div>
     </div>
   );
